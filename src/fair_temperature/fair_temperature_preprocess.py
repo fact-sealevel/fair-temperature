@@ -67,7 +67,8 @@ def prep_rcmip_emissions_conc(scenario, rcmip_file):
                 .values.squeeze()
             )
             emis[:, ie + 1] = pd.Series(tmp).interpolate().values
-        except:
+        except Exception:
+            # TODO: Clean this up so it catches a specific expection, or find alternative method.
             emis[:, ie + 1] = 0
     tmp = (
         emis_subset[
