@@ -11,10 +11,8 @@ dependencies = [
     "click>=8.2.1",
     "fair==1.6.4",
     "numpy>=2.3.0",
-    "pandas>=2.3.0",
-    "pandas-stubs>=2.2.3.250527",
-    "typing-extensions>=4.14.0", # Unlisted dep of xarray, not out package directly.
-    "xarray[io]>=2025.6.0",
+    "pandas>=2.3.0", # Unlisted dep of xarray, not out package directly.
+    "xarray[io,types]>=2025.6.0",
 ]
 
 [project.scripts]
