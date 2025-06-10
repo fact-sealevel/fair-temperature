@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "click>=8.2.1",
     "fair==1.6.4",
     "numpy>=2.3.0",
     "pandas>=2.3.0",
@@ -15,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-fair-temperature = "fair_temperature:main"
+fair-temperature = "fair_temperature:cli.main"
 
 [build-system]
 requires = ["hatchling"]
