@@ -236,17 +236,17 @@ def fair_scm(
         if ghg_forcing.lower() == "etminan":
             from fair.forcing.ghg import etminan as ghg
 
-            if stwv_from_ch4 == None:
+            if stwv_from_ch4 is None:
                 stwv_from_ch4 = 0.12
         elif ghg_forcing.lower() == "myhre":
             from fair.forcing.ghg import myhre as ghg
 
-            if stwv_from_ch4 == None:
+            if stwv_from_ch4 is None:
                 stwv_from_ch4 = 0.15
         elif ghg_forcing.lower() == "meinshausen":
             from fair.forcing.ghg import meinshausen as ghg
 
-            if stwv_from_ch4 == None:
+            if stwv_from_ch4 is None:
                 stwv_from_ch4 = 0.12
         else:
             raise ValueError(
