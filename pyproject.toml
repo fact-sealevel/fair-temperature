@@ -1,0 +1,17 @@
+[project]
+name = "fair-temperature"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Brewster Malevich", email = "bmalevich@rhg.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+fair-temperature = "fair_temperature:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
