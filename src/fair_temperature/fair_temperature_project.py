@@ -305,7 +305,7 @@ def fair_project_temperature(
         attrs=attrs,
     )
     pooledds.to_netcdf(
-        "{}_climate.nc".format(pipeline_id),
+        out_climate_file,
         group=scenario,
         encoding={
             "ocean_heat_content": {"dtype": "float32", "zlib": True, "complevel": 4},
@@ -317,8 +317,6 @@ def fair_project_temperature(
             },
         },
     )
-    yearsds = xr.Dataset({"year": proj_years})
-    yearsds.to_netcdf(out_climate_file, mode="a")
 
     # Done
     return None
