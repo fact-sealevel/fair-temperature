@@ -107,7 +107,7 @@ def main(
 ) -> None:
     click.echo("Hello from fair-temperature!")
 
-    preprocessed_data = fair_preprocess_temperature(rcmip_file, scenario)
+    preprocessed_data = fair_preprocess_temperature(scenario, rcmip_file)
     fit_data = fair_fit_temperature(param_file)
     fair_project_temperature(
         nsamps,
