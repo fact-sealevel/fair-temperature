@@ -3,7 +3,6 @@ import xarray as xr
 import numpy as np
 import fair
 import argparse
-import pickle
 from datetime import datetime
 
 from fair_temperature.my_FAIR_forward import fair_scm as my_fair_scm
@@ -114,22 +113,23 @@ def Smooth(x, w=5):
 
 
 def fair_project_temperature(
-    nsamps, seed, cyear_start, cyear_end, smooth_win, pipeline_id
+    nsamps,
+    seed,
+    cyear_start,
+    cyear_end,
+    smooth_win,
+    pipeline_id,
+    preprocess_data,
+    fit_data,
+    out_oceantemp_file,
+    out_ohc_file,
+    out_gsat_file,
+    out_climate_file,
 ):
-    # Load the preprocessed data
-    preprocess_file = "{}_preprocess.pkl".format(pipeline_id)
-    with open(preprocess_file, "rb") as f:
-        preprocess_data = pickle.load(f)
-
     emis = preprocess_data["emis"]
     REFERENCE_YEAR = preprocess_data["REFERENCE_YEAR"]
     scenario = preprocess_data["scenario"]
     rcmip_file = preprocess_data["rcmip_file"]
-
-    # Load the fit data
-    fit_file = "{}_fit.pkl".format(pipeline_id)
-    with open(fit_file, "rb") as f:
-        fit_data = pickle.load(f)
 
     pars = fit_data["pars"]
     param_file = fit_data["param_file"]
@@ -264,19 +264,19 @@ def fair_project_temperature(
 
     # Write the datasets to netCDF
     tempds.to_netcdf(
-        "{}_gsat.nc".format(pipeline_id),
+        out_gsat_file,
         encoding={
             "surface_temperature": {"dtype": "float32", "zlib": True, "complevel": 4}
         },
     )
     deeptempds.to_netcdf(
-        "{}_oceantemp.nc".format(pipeline_id),
+        out_oceantemp_file,
         encoding={
             "deep_ocean_temperature": {"dtype": "float32", "zlib": True, "complevel": 4}
         },
     )
     ohcds.to_netcdf(
-        "{}_ohc.nc".format(pipeline_id),
+        out_ohc_file,
         encoding={
             "ocean_heat_content": {"dtype": "float32", "zlib": True, "complevel": 4}
         },
@@ -318,7 +318,7 @@ def fair_project_temperature(
         },
     )
     yearsds = xr.Dataset({"year": proj_years})
-    yearsds.to_netcdf("{}_climate.nc".format(pipeline_id), mode="a")
+    yearsds.to_netcdf(out_climate_file, mode="a")
 
     # Done
     return None

@@ -13,6 +13,34 @@ from fair_temperature.fair_temperature_project import fair_project_temperature
     required=True,
 )
 @click.option(
+    "--output-oceantemp-file",
+    envvar="FAIR_TEMPERATURE_OUTPUT_OCEANTEMP_FILE",
+    help="Path to write output ocean temperature file",
+    required=True,
+    type=str,
+)
+@click.option(
+    "--output-ohc-file",
+    envvar="FAIR_TEMPERATURE_OUTPUT_OHC_FILE",
+    help="Path to write output ocean heat content file",
+    required=True,
+    type=str,
+)
+@click.option(
+    "--output-gsat-file",
+    envvar="FAIR_TEMPERATURE_OUTPUT_GSAT_FILE",
+    help="Path to write output global mean surface air temperature file",
+    required=True,
+    type=str,
+)
+@click.option(
+    "--output-climate-file",
+    envvar="FAIR_TEMPERATURE_OUTPUT_CLIMATE_FILE",
+    help="Path to write output climate file",
+    required=True,
+    type=str,
+)
+@click.option(
     "--rcmip-file",
     envvar="FAIR_TEMPERATURE_RCMIP_FILE",
     help="Full path to RCMIP emissions file",
@@ -64,6 +92,10 @@ from fair_temperature.fair_temperature_project import fair_project_temperature
 )
 def main(
     pipeline_id,
+    output_oceantemp_file,
+    output_ohc_file,
+    output_gsat_file,
+    output_climate_file,
     rcmip_file,
     param_file,
     scenario,
@@ -75,8 +107,19 @@ def main(
 ) -> None:
     click.echo("Hello from fair-temperature!")
 
-    fair_preprocess_temperature(pipeline_id, rcmip_file, scenario)
-    fair_fit_temperature(param_file, pipeline_id)
+    preprocessed_data = fair_preprocess_temperature(rcmip_file, scenario)
+    fit_data = fair_fit_temperature(param_file)
     fair_project_temperature(
-        nsamps, seed, cyear_start, cyear_end, smooth_win, pipeline_id
+        nsamps,
+        seed,
+        cyear_start,
+        cyear_end,
+        smooth_win,
+        pipeline_id,
+        preprocessed_data,
+        fit_data,
+        output_oceantemp_file,
+        output_ohc_file,
+        output_gsat_file,
+        output_climate_file,
     )

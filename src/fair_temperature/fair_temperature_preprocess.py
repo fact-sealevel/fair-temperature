@@ -1,7 +1,5 @@
-import os
 import sys
 import argparse
-import pickle
 import numpy as np
 import pandas as pd
 
@@ -108,7 +106,7 @@ def prep_rcmip_emissions_conc(scenario, rcmip_file):
     return emis
 
 
-def fair_preprocess_temperature(scenario, rcmip_file, pipeline_id):
+def fair_preprocess_temperature(scenario, rcmip_file):
     # Definitions
     REFERENCE_YEAR = 1750
 
@@ -122,16 +120,8 @@ def fair_preprocess_temperature(scenario, rcmip_file, pipeline_id):
         "scenario": scenario,
         "rcmip_file": rcmip_file,
     }
-    outfile = open(
-        os.path.join(
-            os.path.dirname(__file__), "{}_preprocess.pkl".format(pipeline_id)
-        ),
-        "wb",
-    )
-    pickle.dump(output, outfile, protocol=-1)
-    outfile.close()
 
-    return None
+    return output
 
 
 if __name__ == "__main__":
