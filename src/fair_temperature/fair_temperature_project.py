@@ -6,7 +6,7 @@ import argparse
 import pickle
 from datetime import datetime
 
-from my_FAIR_forward import fair_scm as my_fair_scm
+from fair_temperature.my_FAIR_forward import fair_scm as my_fair_scm
 
 
 # Function that generates a sample from the FAIR model with provided emissions
