@@ -9,9 +9,6 @@ import pandas as pd
 # Function that prepares the RCMIP emissions data
 def prep_rcmip_emissions_conc(scenario, rcmip_file):
     from fair.constants import molwt
-    from fair.constants.general import EARTH_RADIUS, SECONDS_PER_YEAR
-
-    NTOA_ZJ = 4 * np.pi * EARTH_RADIUS**2 * SECONDS_PER_YEAR * 1e-21
 
     emis_all = pd.read_csv(rcmip_file)
     expt = scenario
@@ -80,9 +77,7 @@ def prep_rcmip_emissions_conc(scenario, rcmip_file):
         .loc[:, "1750":"2500"]
         .values.squeeze()
     )
-    aviNOx = pd.Series(tmp).interpolate().values
-    aviNOx_frac = aviNOx / emis[:, 8]
-    #
+
     unit_convert = np.ones(40)
     unit_convert[1] = 0.001 * molwt.C / molwt.CO2
     unit_convert[2] = 0.001 * molwt.C / molwt.CO2
