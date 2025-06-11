@@ -105,6 +105,9 @@ def main(
     cyear_end,
     smooth_win,
 ) -> None:
+    """
+    Application wrapping the FAIR climate model emulator to generate samples of global mean surface air temperature and ocean heat content under prescribed emissions trajectories.
+    """
     click.echo("Hello from fair-temperature!")
 
     preprocessed_data = fair_preprocess_temperature(scenario, rcmip_file)

@@ -1,6 +1,6 @@
 # fair-temperature
 
-Application wraps around the FAIR climate model emulator to generate samples of global mean surface air temperature and ocean heat content under prescribed emissions trajectories.
+Application wrapping the FAIR climate model emulator to generate samples of global mean surface air temperature and ocean heat content under prescribed emissions trajectories.
 
 > [!CAUTION]
 > This is a prototype. It is likely to change in breaking ways. It might delete all your data. Don't use it in production.
