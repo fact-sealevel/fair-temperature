@@ -24,7 +24,7 @@ Now run the container, for example with Docker, like
 ```shell
 docker run --rm \
   -v ./data:/data \
-  fair-temperature:dev \
+  ghcr.io/stcaf-org/fair-temperature:0.1.0 \
   --pipeline-id=1234 \
   --output-oceantemp-file="/data/output/oceantemp.nc" \
   --output-ohc-file="/data/output/ohc.nc" \
