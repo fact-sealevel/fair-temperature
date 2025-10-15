@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Build multiplatform container images (linux/amd64,  linux/arm64).
 - Update README to use public `ghcr.io/stcaf-org/fair-temperature` container image.
 
 
