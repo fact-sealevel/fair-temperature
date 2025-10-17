@@ -24,7 +24,7 @@ Now run the container, for example with Docker, like
 ```shell
 docker run --rm \
   -v ./data:/data \
-  ghcr.io/stcaf-org/fair-temperature:0.1.0 \
+  ghcr.io/fact-sealevel/fair-temperature:latest \
   --pipeline-id=1234 \
   --output-oceantemp-file="/data/output/oceantemp.nc" \
   --output-ohc-file="/data/output/ohc.nc" \
@@ -33,6 +33,8 @@ docker run --rm \
   --rcmip-file="/data/input/rcmip/rcmip-emissions-annual-means-v5-1-0.csv" \
   --param-file="/data/input/parameters/fair_ar6_climate_params_v4.0.nc"
 ```
+> [!TIP]
+> For this example we use `ghcr.io/fact-sealevel/fair-temperature:latest`. We do not recommend using `latest` for production runs because it will grab the latest release. This means runs will not be reproducible and may include breaking changes. Instead, use a tag for a specific version of the image or an image's digest hash. You can find tagged image versions and digests [here](https://github.com/fact-sealevel/fair-temperature/pkgs/container/fair-temperature).
 
 ## Features
 
@@ -69,7 +71,7 @@ Options:
 See this help documentation by running:
 
 ```shell
-docker run --rm ghcr.io/stcaf-org/fair-temperature:0.1.0 --help
+docker run --rm ghcr.io/fact-sealevel/fair-temperature:latest --help
 ```
 
 These options and configurations can also be set with environment variables prefixed by `FAIR_TEMPERATURE_*`. For example, set `--rcmip-file` with as an environment variable with `FAIR_TEMPERATURE_RCMIP_FILE`.
@@ -85,6 +87,6 @@ from the repository root.
 
 ## Support
 
-Source code is available online at https://github.com/stcaf-org/fair-temperature. This software is open source and available under the MIT license.
+Source code is available online at https://github.com/fact-sealevel/fair-temperature. This software is open source and available under the MIT license.
 
-Please file issues in the issue tracker at https://github.com/stcaf-org/fair-temperature/issues.
+Please file issues in the issue tracker at https://github.com/fact-sealevel/fair-temperature/issues.
