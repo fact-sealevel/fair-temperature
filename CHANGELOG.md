@@ -9,13 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Project repository moved and is now at https://github.com/fact-sealevel/fair-temperature. Updated URLs and image names in docs. 
 - Build multiplatform container images (linux/amd64,  linux/arm64).
-- Update README to use public `ghcr.io/stcaf-org/fair-temperature` container image.
+- Update README to use public `ghcr.io/fact-sealevel/fair-temperature` container image.
 
 
 ## [0.1.0] - 2025-06-11
 
 - Initial release.
 
-[Unreleased]: https://github.com/stcaf-org/fair-temperature/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/stcaf-org/fair-temperature/releases/tag/v0.1.0
+[Unreleased]: https://github.com/fact-sealevel/fair-temperature/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/fact-sealevel/fair-temperature/releases/tag/v0.1.0
