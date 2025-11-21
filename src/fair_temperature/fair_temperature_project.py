@@ -317,6 +317,8 @@ def fair_project_temperature(
             },
         },
     )
+    yearsds = xr.Dataset({"year": proj_years})
+    yearsds.to_netcdf(out_climate_file, mode="a")
 
     # Done
     return None
