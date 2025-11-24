@@ -318,6 +318,11 @@ def fair_project_temperature(
         },
     )
 
+    # Adds "year" variable to root of hierarchy in output NetCDF4 file. Some
+    # modules depend on this behavior in the original FACTS1.
+    yearsds = xr.Dataset({"year": proj_years})
+    yearsds.to_netcdf(out_climate_file, mode="a")
+
     # Done
     return None
 
