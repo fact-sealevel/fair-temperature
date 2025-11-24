@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Dropped cruft CLI clauses and processing steps ([PR #7](https://github.com/fact-sealevel/fair-temperature/pull/7), [@brews](https://github.com/brews)).
+
 ### Fixed
 
 - Bad hyperlink for release in CHANGELOG.
