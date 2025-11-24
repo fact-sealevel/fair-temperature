@@ -1,8 +1,6 @@
-import sys
 import xarray as xr
 import numpy as np
 import fair
-import argparse
 from datetime import datetime
 
 from fair_temperature.my_FAIR_forward import fair_scm as my_fair_scm
@@ -325,63 +323,3 @@ def fair_project_temperature(
 
     # Done
     return None
-
-
-if __name__ == "__main__":
-    # Initialize the command-line argument parser
-    parser = argparse.ArgumentParser(
-        description="Run the project stage for the FAIR AR6 temperature module",
-        epilog="Note: This is meant to be run as part of the Framework for the Assessment of Changes To Sea-level (FACTS)",
-    )
-
-    # Define the command line arguments to be expected
-    parser.add_argument(
-        "--pipeline_id",
-        help="Unique identifier for this instance of the module",
-        required=True,
-    )
-    parser.add_argument(
-        "--nsamps",
-        help="Number of samples to create (uses replacement if nsamps > n parameters) (default=10)",
-        type=int,
-        default=10,
-    )
-    parser.add_argument(
-        "--seed",
-        help="Seed value for random number generator (default=1234)",
-        type=int,
-        default=1234,
-    )
-    parser.add_argument(
-        "--cyear_start",
-        help="Start year of temporal range for centering (default=1850)",
-        type=int,
-        default=1850,
-    )
-    parser.add_argument(
-        "--cyear_end",
-        help="End year of temporal range for centering (default=1900)",
-        type=int,
-        default=1900,
-    )
-    parser.add_argument(
-        "--smooth_win",
-        help="Number of years to use as a smoothing window (default=19)",
-        type=int,
-        default=19,
-    )
-
-    # Parse the arguments
-    args = parser.parse_args()
-
-    # Run the code
-    fair_project_temperature(
-        nsamps=args.nsamps,
-        seed=args.seed,
-        cyear_start=args.cyear_start,
-        cyear_end=args.cyear_end,
-        smooth_win=args.smooth_win,
-        pipeline_id=args.pipeline_id,
-    )
-
-    sys.exit()
